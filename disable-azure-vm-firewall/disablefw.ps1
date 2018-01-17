@@ -1,4 +1,4 @@
-﻿# Disables Windows Firewall Profiles 
+﻿# This small snippet disables Windows Firewall Profiles 
 
 Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile' -name "EnableFirewall" -Value 0
 
