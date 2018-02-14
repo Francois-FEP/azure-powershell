@@ -10,7 +10,8 @@
     Select-AzureRmSubscription –SubscriptionName "My Azure Subscription"
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
     
-    # Check that the provider is registered
+# Check that the provider is registered
+
     Get-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 
     Add-AzureAccount
@@ -43,20 +44,20 @@
 
 # The preceding command displays any warnings and errors that block migration. If validation is successful, then you can move on to the Prepare step:
 
-Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
+    Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
 
 # Option B. Migrate to an existing virtual network in the Resource Manager deployment model
 # This example sets the resource group name to myResourceGroup, the virtual network name to myVirtualNetwork and the subnet name to mySubNet. Replace the names in the example with the names of your own resources.
 
-$existingVnetRGName = "myResourceGroup"
-$vnetName = "myVirtualNetwork"
-$subnetName = "mySubNet"
+    $existingVnetRGName = "myResourceGroup"
+    $vnetName = "myVirtualNetwork"
+    $subnetName = "mySubNet"
 
 # First, validate if you can migrate the virtual network using the following command:
 
-$validate = Move-AzureService -Validate -ServiceName $serviceName -DeploymentName $deploymentName -UseExistingVirtualNetwork  `
--VirtualNetworkResourceGroupName $existingVnetRGName -VirtualNetworkName $vnetName -SubnetName $subnetName
-$validate.ValidationMessages
+    $validate = Move-AzureService -Validate -ServiceName $serviceName -DeploymentName $deploymentName -UseExistingVirtualNetwork  `
+    -VirtualNetworkResourceGroupName $existingVnetRGName -VirtualNetworkName $vnetName -SubnetName $subnetName
+    $validate.ValidationMessages
 
 # The preceding command displays any warnings and errors that block migration. If validation is successful, then you can proceed with the following Prepare step:
 
@@ -115,12 +116,12 @@ $validate.ValidationMessages
 # Delete VM images stored in the storage account
 # Preceding command returns all the VM images with OS disk stored in the storage account.
 
-   Get-AzureVmImage | Where-Object { $_.OSDiskConfiguration.MediaLink -ne $null -and $_.OSDiskConfiguration.MediaLink.Host.Contains($storageAccountName)`
-                           } | Select-Object -Property ImageName, ImageLabel
+    Get-AzureVmImage | Where-Object { $_.OSDiskConfiguration.MediaLink -ne $null -and $_.OSDiskConfiguration.MediaLink.Host.Contains($storageAccountName)`
+    } | Select-Object -Property ImageName, ImageLabel
 
 # Preceding command returns all the VM images with data disks stored in the storage account.
 
-   Get-AzureVmImage | Where-Object {$_.DataDiskConfigurations -ne $null `
+    Get-AzureVmImage | Where-Object {$_.DataDiskConfigurations -ne $null `
     -and ($_.DataDiskConfigurations | Where-Object {$_.MediaLink -ne $null -and $_.MediaLink.Host.Contains($storageAccountName)}).Count -gt 0 `
     } | Select-Object -Property ImageName, ImageLabel
 
