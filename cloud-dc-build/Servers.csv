@@ -1,3 +1,3 @@
 Name,VmResourceGroup,ImagePublisher,ImageOffer,ImageSKU,Size,AvailabilitySet,StorageType,dnsOne,dnsTwo,DiskSizeInGB,Subnet,IP,TimeZone,DomainJoin,DomainOU
 myVmWeb,rg-test-vms-public,MicrosoftWindowsServer,WindowsServer,2016-Datacenter-smalldisk,Standard_A2_v2,tkb-prod-as-one,Standard_LRS,8.8.8.8,8.8.4.4,32,Public,10.1.0.10,GMT Standard Time,ad.domain.co.uk,"OU=Azure,DC=ad,DC=domain,DC=co,DC=uk"
-myVmMgt,rg-test-vms-private,MicrosoftWindowsServer,WindowsServer,2016-Datacenter,Standard_A1_v2,tkb-prod-as-one,Standard_LRS,8.8.8.8,8.8.4.4,128,Private,10.1.0.11,GMT Standard Time,ad.domain.co.uk,"OU=Azure,DC=ad,DC=domain,DC=co,DC=uk"
+myVmMgt,rg-test-vms-private,MicrosoftWindowsServer,WindowsServer,2016-Datacenter,Standard_A1_v2,tkb-prod-as-one,Standard_LRS,8.8.8.8,8.8.4.4,128,Private,10.1.0.11,Pacific Standard Time,ad.domain.co.uk,"OU=Azure,DC=ad,DC=domain,DC=co,DC=uk"

@@ -1,4 +1,6 @@
 # Add Av Sets & NSG
+# set disk name
+# Add Diag Storage Account
 ###################
 
 Param (
@@ -32,6 +34,7 @@ $pubName = $vm.ImagePublisher
 $offerName = $vm.ImageOffer
 $dnsPri = $vm.dnsOne
 $dnsSec = $vm.dnsTwo
+$vmTimeZone = $vm.TimeZone
 
 $pip = New-AzureRmPublicIpAddress -ResourceGroupName $vmRgName -Location $location `
     -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name ($vmName+"-pip")
@@ -45,7 +48,7 @@ $nic = New-AzureRmNetworkInterface -Name ($vmName+"-NIC") -ResourceGroupName $vm
 
 # Create a virtual machine configuration
 $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize | `
-    Set-AzureRmVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
+    Set-AzureRmVMOperatingSystem -Windows -ComputerName $vmName -TimeZone $vmTimeZone -Credential $cred | `
     Set-AzureRmVMSourceImage -PublisherName $pubName -Offer $offerName `
     -Skus $imageSKU -Version latest | Add-AzureRmVMNetworkInterface -Id $nic.Id
 
