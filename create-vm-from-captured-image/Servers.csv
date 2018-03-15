@@ -1,0 +1,6 @@
+Name,vmImage,Service,avSet,Size,imageRG,Subnet,IP
+Server01,vmImageName,vmRG,vmAS,Standard_A8_V2,imageRG,vmSubnet,10.6.22.31
+Server02,vmImageName,vmRG,vmAS,Standard_A8_V2,imageRG,vmSubnet,10.6.22.32
+Server03,vmImageName,vmRG,vmAS,Standard_A8_V2,imageRG,vmSubnet,10.6.22.33
+Server04,vmImageName,vmRG,vmAS,Standard_A8_V2,imageRG,vmSubnet,10.6.22.34
+Server05,vmImageName,vmRG,vmAS,Standard_A8_V2,imageRG,vmSubnet,10.6.22.35
