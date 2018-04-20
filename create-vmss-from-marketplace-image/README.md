@@ -1,0 +1,1 @@
+Deploy vm scale set and all components including LB PIP Storage Account from an Azure Marketplace OS image
