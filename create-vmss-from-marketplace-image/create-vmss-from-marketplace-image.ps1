@@ -1,6 +1,6 @@
 # Create Resource Group
-$loc = 'West Europe';
-$rgname = 'vmsstest';
+$loc = 'Central US';
+$rgname = 'vmssmc';
 
 New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
