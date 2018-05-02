@@ -9,7 +9,7 @@ Set-ExecutionPolicy Bypass
 
 $AccountName ="sysadmin"
 # Note: If you’re performing this demo on a locally hosted VM, use a local administrative user name instead of “demo user”.
-$Password = ConvertTo-SecureString "P@ssw0rd!!!!" -AsPlainText -Force
+$Password = ConvertTo-SecureString "add password here" -AsPlainText -Force
 # Note: Use the password provided to you from your VM Environments that you used to log into the Demo User account on the VM Host. 
 # Note: If you’re performing this demo on a locally hosted VM please use the local administrative user’s password instead of the demo user password.
 $cred = New-Object System.Management.Automation.PSCredential($AccountName, $Password)
@@ -23,7 +23,7 @@ Get-WindowsAutoPilotInfo.ps1 -OutputFile Q:\WindowsAutoPilotInfo.csv
 
 
 $AccountName ="autopilot"
-$Password = ConvertTo-SecureString "P@ssw0rd!!!!" -AsPlainText -Force
+$Password = ConvertTo-SecureString "add password here" -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential($AccountName, $Password)
 New-PSDrive –Name “Q” –PSProvider FileSystem –Root "\\192.168.0.76\Share" -Credential $cred –Persist
 Install-Script Get-WindowsAutoPilotInfo
