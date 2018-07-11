@@ -5,12 +5,12 @@ $appgw = Get-AzureRmApplicationGateway `
     -Name appgw-name `
     -ResourceGroupName appgw-rg
 
-# Get the existing HTTPS listener, because it had already exists
+# Get the existing HTTPS listener
 $myHTTPSListener = Get-AzureRmApplicationGatewayHttpListener `
     -Name appGatewayHttpsListener `
     -ApplicationGateway $appgw
 
-# Get the HTTP listener, because it had already exists
+# Get the HTTP listener
 $myHTTPListener = Get-AzureRmApplicationGatewayHttpListener `
     -Name appGatewayHttpListener `
     -ApplicationGateway $appgw
