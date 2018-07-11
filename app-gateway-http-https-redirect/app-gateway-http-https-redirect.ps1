@@ -11,7 +11,9 @@ $httpslistener = Get-AzureRmApplicationGatewayHttpListener `
     -ApplicationGateway $gw
 
 # Get the HTTP listener, because it had already exists
-$listener = Get-AzureRmApplicationGatewayHttpListener -Name appGatewayHttpListener -ApplicationGateway $gw
+$listener = Get-AzureRmApplicationGatewayHttpListener `
+    -Name appGatewayHttpListener `
+    -ApplicationGateway $gw
 
 # Add a redirection configuration using a permanent redirect and targeting the existing listener
 Add-AzureRmApplicationGatewayRedirectConfiguration `
