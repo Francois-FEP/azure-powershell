@@ -1,42 +1,42 @@
 # This script assumes that the http and https listeners are already in place. 
 
 # Get the application gateway
-$gw = Get-AzureRmApplicationGateway `
-    -Name app-gw-name `
-    -ResourceGroupName app-gw-rg
+$appgw = Get-AzureRmApplicationGateway `
+    -Name appgw-name `
+    -ResourceGroupName appgw-rg
 
 # Get the existing HTTPS listener, because it had already exists
-$httpslistener = Get-AzureRmApplicationGatewayHttpListener `
+$myHTTPSListener = Get-AzureRmApplicationGatewayHttpListener `
     -Name appGatewayHttpsListener `
-    -ApplicationGateway $gw
+    -ApplicationGateway $appgw
 
 # Get the HTTP listener, because it had already exists
-$listener = Get-AzureRmApplicationGatewayHttpListener `
+$myHTTPListener = Get-AzureRmApplicationGatewayHttpListener `
     -Name appGatewayHttpListener `
-    -ApplicationGateway $gw
+    -ApplicationGateway $appgw
 
 # Add a redirection configuration using a permanent redirect and targeting the existing listener
 Add-AzureRmApplicationGatewayRedirectConfiguration `
     -Name redirectHttptoHttps `
     -RedirectType Permanent `
-    -TargetListener $httpslistener `
+    -TargetListener $myHTTPSListener `
     -IncludePath $true `
     -IncludeQueryString $true `
-    -ApplicationGateway $gw
+    -ApplicationGateway $appgw
 
 # Get the redirect configuration
 $redirectconfig = Get-AzureRmApplicationGatewayRedirectConfiguration `
     -Name redirectHttptoHttps `
-    -ApplicationGateway $gw
+    -ApplicationGateway $appgw
 
 # Add a new rule to handle the redirect and use the new listener
 Add-AzureRmApplicationGatewayRequestRoutingRule `
     -Name rule2 `
     -RuleType Basic `
-    -HttpListener $listener `
+    -HttpListener $myHTTPListener `
     -RedirectConfiguration $redirectconfig `
-    -ApplicationGateway $gw
+    -ApplicationGateway $appgw
 
 # Update the application gateway
 Set-AzureRmApplicationGateway `
-    -ApplicationGateway $gw
+    -ApplicationGateway $appgw
